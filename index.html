@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Penggandaan</title>
 	<link rel="stylesheet" href="">
@@ -18,6 +18,18 @@
 <body>
 	<textarea name="input" id="input" cols="30" rows="10" onkeyup="capture()" placeholder="Masukan teks yang akan digandakan disini"></textarea>
 	<textarea name="output" id="output" cols="30" rows="10" disabled="" placeholder="Hasilnya..."></textarea>
+	<br>
+	<input type="checkbox" id="check1" onchange="capture()">
+	<label for="check1">Space</label>
+	<br>
+	<input type="checkbox" id="check2" onchange="capture()">
+	<label for="check2">Enter</label>
+	<br>
+	<input type="checkbox" id="check3" onchange="capture()">
+	<label for="check3">Huruf Kecil</label>
+	<br>
+	<input type="checkbox" id="check4" onchange="capture()">
+	<label for="check4">Huruf Besar</label>
 	<br>
 	<input type="number" id="sum" value="2" onkeyup="capture()" onclick="capture()">
 	<button id="reset" onclick="reset()">Reset</button>
@@ -40,7 +52,10 @@
 			}
 			for(var i = 1; i <= sum; i++){
 				temp += input;
-				if (i < sum) temp += " ";
+				if (i < sum && getById("check1").checked == true) temp += " ";
+				if (i < sum && getById("check2").checked == true) temp += "\n";
+				if (getById("check3").checked == true) temp = temp.toLowerCase();
+				if (getById("check4").checked == true) temp = temp.toUpperCase();
 			}
 			getById("output").value = temp;
 		}
